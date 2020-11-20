@@ -5,7 +5,7 @@
               version="2.2">
 
     <application>
-        <message-bundle>br.com.agendaprimejpa.traducao.Messages</message-bundle>
+        <message-bundle>br.com.todolist.Messages</message-bundle>
 
         <locale-config>
             <default-locale>pt_BR</default-locale>
