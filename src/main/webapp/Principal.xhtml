@@ -47,6 +47,22 @@
                     <h:outputText value="#{tarefas.statusTarefa}"/>
                 </p:column>
             </p:dataTable>
+
+            <!-- modal de usuario -->
+
+            <p:dialog header="Novo usuario" widgetVar="edicaoUsuarioDiaglo" id="usuario-dialog"
+                      resizable="false" modal="true">
+
+                <h:panelGrid columns="2" id="painel-dialog">
+                    <p:outputLabel value="Código" for="id-usuario" />
+                    <p:inputText id="id-usuario" size="4" maxlength="10" value="" />
+
+                    <p:outputLabel value="Nome" for="nome-usuario" />
+                    <p:inputText id="nome-usuario" size="60" maxlength="60" value="" />
+                </h:panelGrid>
+            </p:dialog>
+
+
         </h:form>
     </ui:define>
 </ui:composition>
