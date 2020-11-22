@@ -13,7 +13,25 @@
             <f:viewAction action="#{listaTarefaBean.Consultar}"/>
         </f:metadata>
 
+        <h1>Lista de tarefas</h1>
+
         <h:form id="principal">
+
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:commandButton value="Usuario" icon="ui-icon-person" onclick="PF('edicaoUsuarioDiaglo').show()"/>
+                    <p:commandButton value="Lugares" icon="ui-icon-arrowreturnthick-1-s"/>
+
+                    <span class="ui-separator">
+                        <span class="ui-icon pi pi-ellipsis-v"/>
+                    </span>
+                    <p:commandButton icon="ui-icon-pencil" title="Editar"/>
+                    <p:commandButton icon="ui-icon-trash" title="Excluir"/>
+                    <p:commandButton icon="ui-icon-arrowthick-1-s" title="Exportar para XLS"/>
+                </f:facet>
+            </p:toolbar>
+
+
             <p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas" emptyMessage="Nenhuma tarefa cadastrada"
                          rows="5" paginator="true" paginatorPosition="bottom">
 
