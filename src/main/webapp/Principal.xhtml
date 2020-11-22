@@ -9,5 +9,23 @@
 </h:head>
 <h:body>
 
+    <f:metadata>
+        <f:viewAction action="#{listaTarefaBean.Consultar}" />
+    </f:metadata>
+
+    <p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas"
+                 emptyMessage="Nenhuma tarefa cadastrada.">
+
+        <p:column headerText="Descrição">
+            <h:outputText value="#{tarefas.descricao}" />
+        </p:column>
+        <p:column headerText="Data de cadastro" width="250">
+            <h:outputText value="#{tarefas.dataCadastro}" />
+        </p:column>
+        <p:column headerText="Status" width="160">
+            <h:outputText value="#{tarefas.statusTarefa}" />
+        </p:column>
+    </p:dataTable>
+
 </h:body>
 </html>
