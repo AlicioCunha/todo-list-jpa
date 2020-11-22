@@ -10,7 +10,7 @@
     <ui:define name="corpo">
 
         <f:metadata>
-            <f:viewAction action="#{listaTarefaBean.Consultar}"/>
+            <f:viewAction action="#{listaTarefaBean.consultar}"/>
         </f:metadata>
 
         <h1>Lista de tarefas</h1>
@@ -19,7 +19,11 @@
 
             <p:toolbar>
                 <f:facet name="left">
-                    <p:commandButton type="button" value="Nova tarefa" icon="ui-icon-newwin" onclick="PF('edicaoTarefaDialog').show()"/>
+                    <p:commandButton value="Nova tarefa" icon="ui-icon-newwin"
+                                     action="#{listaTarefaBean.criarNovaTarefa}"
+                                     process="@this"
+                                     update="tarefa-dialog"
+                                     oncomplete="PF('edicaoTarefaDialog').show();" />
 
                     <span class="ui-separator">
                         <span class="ui-icon pi pi-ellipsis-v"/>
@@ -34,7 +38,7 @@
 
 
             <p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas" emptyMessage="Nenhuma tarefa cadastrada"
-                         rows="5" paginator="true" paginatorPosition="bottom">
+                         rows="5" paginator="true" paginatorPosition="bottom" id="tarefas-table">
 
                 <p:column headerText="Código" width="200" sortBy="#{tarefas.id}">
                     <h:outputText value="#{tarefas.id}"/>
@@ -49,23 +53,32 @@
                 </p:column>
             </p:dataTable>
 
-            <!-- modal de usuario -->
+            <!-- modal de tarefa -->
 
             <p:dialog header="Tarefa" widgetVar="edicaoTarefaDialog" id="tarefa-dialog"
                       resizable="false" modal="true">
 
                 <h:panelGrid columns="2" id="tarefa-painel-dialog">
-                    <p:outputLabel value="Código" for="id-tarefa" />
-                    <p:inputText id="id-tarefa" size="4" maxlength="10" value="" />
 
                     <p:outputLabel value="Descrição" for="descricao" />
-                    <p:inputText id="descricao" size="60" maxlength="60" value="" />
+                    <p:inputText id="descricao" size="60" maxlength="60" value="#{listaTarefaBean.novaTarefa.descricao}" />
 
                     <p:outputLabel value="Pessoa" for="usuario" />
-                    <p:inputText id="usuario" size="60" maxlength="60" value="" />
+                    <p:inputText id="usuario" size="60" maxlength="60" />
 
                     <p:outputLabel value="Local" for="local" />
-                    <p:inputText id="local" size="60" maxlength="60" value="" />
+                    <p:inputText id="local" size="60" maxlength="60"  />
+
+                    <p:outputLabel value="Status" for="status" />
+                    <p:inputText id="status" size="10" maxlength="10" value="#{listaTarefaBean.novaTarefa.statusTarefa}" />
+
+                    <p:outputLabel />
+                    <p:commandButton value="Salvar" id="salvar-button"
+                                action="#{listaTarefaBean.salvarNovaTarefa}"
+                                process="tarefa-dialog"
+                                     update="tarefas-table"
+                                     oncomplete="PF('edicaoTarefaDialog').hide()" />
+
                 </h:panelGrid>
             </p:dialog>
 
@@ -76,15 +89,18 @@
 
                 <h:panelGrid columns="2" id="painel-dialog">
                     <p:outputLabel value="Código" for="id-usuario" />
-                    <p:inputText id="id-usuario" size="4" maxlength="10" value="" />
+                    <p:inputText id="id-usuario" size="4" maxlength="10" />
 
                     <p:outputLabel value="Nome" for="nome-usuario" />
-                    <p:inputText id="nome-usuario" size="60" maxlength="60" value="" />
+                    <p:inputText id="nome-usuario" size="60" maxlength="60" />
                 </h:panelGrid>
             </p:dialog>
 
 
         </h:form>
+
+
+
     </ui:define>
 </ui:composition>
 
