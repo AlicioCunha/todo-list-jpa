@@ -14,7 +14,7 @@ public class EntityManagerProducer {
     private EntityManagerFactory factory;
 
     public EntityManagerProducer() {
-        this.factory = Persistence.createEntityManagerFactory("AgendaPU");
+        this.factory = Persistence.createEntityManagerFactory("TodoListPU");
     }
 
     @Produces
