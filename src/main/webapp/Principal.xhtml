@@ -19,15 +19,16 @@
 
             <p:toolbar>
                 <f:facet name="left">
-                    <p:commandButton value="Usuario" icon="ui-icon-person" onclick="PF('edicaoUsuarioDiaglo').show()"/>
-                    <p:commandButton value="Lugares" icon="ui-icon-arrowreturnthick-1-s"/>
+                    <p:commandButton type="button" value="Nova tarefa" icon="ui-icon-newwin" onclick="PF('edicaoTarefaDialog').show()"/>
 
                     <span class="ui-separator">
                         <span class="ui-icon pi pi-ellipsis-v"/>
                     </span>
                     <p:commandButton icon="ui-icon-pencil" title="Editar"/>
                     <p:commandButton icon="ui-icon-trash" title="Excluir"/>
-                    <p:commandButton icon="ui-icon-arrowthick-1-s" title="Exportar para XLS"/>
+
+                    <p:commandButton value="Usuario" icon="ui-icon-person" onclick="PF('edicaoUsuarioDialog').show()"/>
+                    <p:commandButton value="Lugares" icon="ui-icon-arrowreturnthick-1-s"/>
                 </f:facet>
             </p:toolbar>
 
@@ -50,7 +51,27 @@
 
             <!-- modal de usuario -->
 
-            <p:dialog header="Novo usuario" widgetVar="edicaoUsuarioDiaglo" id="usuario-dialog"
+            <p:dialog header="Tarefa" widgetVar="edicaoTarefaDialog" id="tarefa-dialog"
+                      resizable="false" modal="true">
+
+                <h:panelGrid columns="2" id="tarefa-painel-dialog">
+                    <p:outputLabel value="Código" for="id-tarefa" />
+                    <p:inputText id="id-tarefa" size="4" maxlength="10" value="" />
+
+                    <p:outputLabel value="Descrição" for="descricao" />
+                    <p:inputText id="descricao" size="60" maxlength="60" value="" />
+
+                    <p:outputLabel value="Pessoa" for="usuario" />
+                    <p:inputText id="usuario" size="60" maxlength="60" value="" />
+
+                    <p:outputLabel value="Local" for="local" />
+                    <p:inputText id="local" size="60" maxlength="60" value="" />
+                </h:panelGrid>
+            </p:dialog>
+
+            <!-- modal de usuario -->
+
+            <p:dialog header="Novo usuario" widgetVar="edicaoUsuarioDialog" id="usuario-dialog"
                       resizable="false" modal="true">
 
                 <h:panelGrid columns="2" id="painel-dialog">
