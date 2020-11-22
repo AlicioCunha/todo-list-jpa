@@ -4,34 +4,33 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<h:head>
-    <meta charset="UTF-8"/>
-    <title>Lista de tarefas</title>
-</h:head>
-<h:body>
 
-    <f:metadata>
-        <f:viewAction action="#{listaTarefaBean.Consultar}"/>
-    </f:metadata>
+<ui:composition template="/WEB-INF/template/layout.xhtml">
 
-    <h:form id="principal">
-        <p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas" emptyMessage="Nenhuma tarefa cadastrada"
-                     rows="5" paginator="true" paginatorPosition="bottom">
+    <ui:define name="corpo">
 
-            <p:column headerText="Código" width="200" sortBy="#{tarefas.id}">
-                <h:outputText value="#{tarefas.id}"/>
-            </p:column>
+        <f:metadata>
+            <f:viewAction action="#{listaTarefaBean.Consultar}"/>
+        </f:metadata>
 
-            <p:column headerText="Descrição" width="200" sortBy="#{tarefas.descricao}">
-                <h:outputText value="#{tarefas.descricao}"/>
-            </p:column>
+        <h:form id="principal">
+            <p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas" emptyMessage="Nenhuma tarefa cadastrada"
+                         rows="5" paginator="true" paginatorPosition="bottom">
 
-            <p:column headerText="Status" width="200" sortBy="#{tarefas.statusTarefa}">
-                <h:outputText value="#{tarefas.statusTarefa}"/>
-            </p:column>
-        </p:dataTable>
-    </h:form>
+                <p:column headerText="Código" width="200" sortBy="#{tarefas.id}">
+                    <h:outputText value="#{tarefas.id}"/>
+                </p:column>
 
+                <p:column headerText="Descrição" width="200" sortBy="#{tarefas.descricao}">
+                    <h:outputText value="#{tarefas.descricao}"/>
+                </p:column>
 
-</h:body>
+                <p:column headerText="Status" width="200" sortBy="#{tarefas.statusTarefa}">
+                    <h:outputText value="#{tarefas.statusTarefa}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
 </html>
