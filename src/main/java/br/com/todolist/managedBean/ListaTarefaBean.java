@@ -39,7 +39,7 @@ public class ListaTarefaBean implements Serializable {
         repository.salvar(novaTarefa);
         consultar();
 
-        messages.info("Empresa salva com sucesso!");
+        messages.info("Tarefa salva com sucesso!");
     }
 
 
