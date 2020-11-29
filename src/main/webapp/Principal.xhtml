@@ -48,8 +48,12 @@
                     <h:outputText value="#{tarefas.descricao}"/>
                 </p:column>
 
-                <p:column headerText="Status" width="200" sortBy="#{tarefas.statusTarefa}">
-                    <h:outputText value="#{tarefas.statusTarefa}"/>
+                <p:column headerText="Usuario" width="200" sortBy="#{tarefas.usuario.nome}">
+                    <h:outputText value="#{tarefas.usuario.nome}"/>
+                </p:column>
+
+                <p:column headerText="Status" width="200" sortBy="#{tarefas.statusTarefa.status}">
+                    <h:outputText value="#{tarefas.statusTarefa.status}"/>
                 </p:column>
             </p:dataTable>
 
@@ -70,7 +74,11 @@
                     <p:inputText id="local" size="60" maxlength="60"  />
 
                     <p:outputLabel value="Status" for="status" />
-                    <p:inputText id="status" size="10" maxlength="10" value="#{listaTarefaBean.novaTarefa.statusTarefa}" />
+                    <p:selectOneMenu id="status" value="#{listaTarefaBean.novaTarefa.statusTarefa}">
+                        <f:selectItem itemLabel="Selecione" />
+                        <f:selectItems value="#{listaTarefaBean.statusTarefa}" var="status"
+                                       itemLabel="#{status.status}" itemValue="#{status}" />
+                    </p:selectOneMenu>
 
                     <p:outputLabel />
                     <p:commandButton value="Salvar" id="salvar-button"
