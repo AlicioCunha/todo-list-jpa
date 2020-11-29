@@ -17,6 +17,10 @@
 
         <h:form id="principal">
 
+            <p:messages autoUpdate="true" />
+
+            <p:growl id="growl" showDetail="true" sticky="true" />
+
             <p:toolbar>
                 <f:facet name="left">
                     <p:commandButton value="Nova tarefa" icon="ui-icon-newwin"
@@ -84,7 +88,7 @@
                     <p:commandButton value="Salvar" id="salvar-button"
                                 action="#{listaTarefaBean.salvarNovaTarefa}"
                                 process="tarefa-dialog"
-                                     update="tarefas-table"
+                                     update="tarefas-table @form"
                                      oncomplete="PF('edicaoTarefaDialog').hide()" />
 
                 </h:panelGrid>
