@@ -38,6 +38,9 @@ public class ListaTarefa implements Serializable {
     @Column(name = "status_tarefa")
     private StatusTarefa statusTarefa;
 
+    @ManyToOne
+    private Usuario usuario;
+
     public Long getId() {
         return id;
     }
@@ -92,6 +95,14 @@ public class ListaTarefa implements Serializable {
 
     public void setStatusTarefa(StatusTarefa statusTarefa) {
         this.statusTarefa = statusTarefa;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
