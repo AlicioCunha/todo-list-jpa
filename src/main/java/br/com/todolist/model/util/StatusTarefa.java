@@ -2,18 +2,18 @@ package br.com.todolist.model.util;
 
 public enum StatusTarefa {
 
-    PENDENTE(1),
-    FAZENDO(2),
-    CONCLUIDO(3),
-    CANCELADO(4);
+    PENDENTE("Pendente"),
+    FAZENDO("Fazendo"),
+    CONCLUIDO("Concluido"),
+    CANCELADO("Cancelado");
 
-    private int status;
+    private String status;
 
-    StatusTarefa(int valor){
-        this.status = valor;
+    StatusTarefa(String status) {
+        this.status = status;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 }
