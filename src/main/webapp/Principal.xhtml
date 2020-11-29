@@ -21,6 +21,7 @@
 
             <p:growl id="growl" showDetail="true" sticky="true" />
 
+
             <p:toolbar>
                 <f:facet name="left">
                     <p:commandButton value="Nova tarefa" icon="ui-icon-newwin"
@@ -66,6 +67,8 @@
             <p:dialog header="Tarefa" widgetVar="edicaoTarefaDialog" id="tarefa-dialog"
                       resizable="false" modal="true">
 
+                <p:messages id="tarefa-dialog-message" />
+
                 <h:panelGrid columns="2" id="tarefa-painel-dialog">
 
                     <p:outputLabel value="Descrição" for="descricao" />
@@ -88,8 +91,8 @@
                     <p:commandButton value="Salvar" id="salvar-button"
                                 action="#{listaTarefaBean.salvarNovaTarefa}"
                                 process="tarefa-dialog"
-                                     update="tarefas-table @form"
-                                     oncomplete="PF('edicaoTarefaDialog').hide()" />
+                                     update="tarefas-table tarefa-dialog-message tarefa-painel-dialog"
+                                     oncomplete="if (!args.validationFailed) PF('edicaoTarefaDialog').hide()" />
 
                 </h:panelGrid>
             </p:dialog>
