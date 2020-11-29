@@ -2,8 +2,10 @@ package br.com.todolist.model;
 
 
 import br.com.todolist.model.util.StatusTarefa;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,6 +18,7 @@ public class ListaTarefa implements Serializable {
     @GeneratedValue
     private Long id;
 
+    @NotEmpty
     @Column(name = "descricao", nullable = false, length = 120)
     private String descricao;
 
