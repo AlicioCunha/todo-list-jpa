@@ -4,11 +4,13 @@ import br.com.todolist.model.ListaTarefa;
 import br.com.todolist.model.util.StatusTarefa;
 import br.com.todolist.repository.ListaTarefaRepository;
 import br.com.todolist.util.FacesMessages;
+import org.primefaces.PrimeFaces;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 @Named
@@ -35,11 +37,13 @@ public class ListaTarefaBean implements Serializable {
         novaTarefa = new ListaTarefa();
     }
 
-    public void salvarNovaTarefa(){
+    public void salvarNovaTarefa() {
         repository.salvar(novaTarefa);
         consultar();
 
         messages.info("Tarefa salva com sucesso!");
+        PrimeFaces.current().ajax().update(
+                Arrays.asList("principal:messagem-geral", "principal:tarefas-table"));
     }
 
 
@@ -59,7 +63,7 @@ public class ListaTarefaBean implements Serializable {
         this.novaTarefa = novaTarefa;
     }
 
-    public StatusTarefa[] getStatusTarefa(){
+    public StatusTarefa[] getStatusTarefa() {
         return StatusTarefa.values();
     }
 }

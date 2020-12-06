@@ -17,9 +17,9 @@
 
         <h:form id="principal">
 
-            <p:messages autoUpdate="true" />
+            <p:messages id="messagem-geral" />
 
-            <p:growl id="growl" showDetail="true" sticky="true" />
+            <p:growl id="growl" showDetail="true" sticky="true"/>
 
 
             <p:toolbar>
@@ -28,7 +28,7 @@
                                      action="#{listaTarefaBean.criarNovaTarefa}"
                                      process="@this"
                                      update="tarefa-dialog"
-                                     oncomplete="PF('edicaoTarefaDialog').show();" />
+                                     oncomplete="PF('edicaoTarefaDialog').show();"/>
 
                     <span class="ui-separator">
                         <span class="ui-icon pi pi-ellipsis-v"/>
@@ -67,32 +67,33 @@
             <p:dialog header="Tarefa" widgetVar="edicaoTarefaDialog" id="tarefa-dialog"
                       resizable="false" modal="true">
 
-                <p:messages id="tarefa-dialog-message" />
+                <p:messages id="tarefa-dialog-message"/>
 
                 <h:panelGrid columns="2" id="tarefa-painel-dialog">
 
-                    <p:outputLabel value="Descrição" for="descricao" />
-                    <p:inputText id="descricao" size="60" maxlength="60" value="#{listaTarefaBean.novaTarefa.descricao}" />
+                    <p:outputLabel value="Descrição" for="descricao"/>
+                    <p:inputText id="descricao" size="60" maxlength="60"
+                                 value="#{listaTarefaBean.novaTarefa.descricao}"/>
 
-                    <p:outputLabel value="Pessoa" for="usuario" />
-                    <p:inputText id="usuario" size="60" maxlength="60" />
+                    <p:outputLabel value="Pessoa" for="usuario"/>
+                    <p:inputText id="usuario" size="60" maxlength="60"/>
 
-                    <p:outputLabel value="Local" for="local" />
-                    <p:inputText id="local" size="60" maxlength="60"  />
+                    <p:outputLabel value="Local" for="local"/>
+                    <p:inputText id="local" size="60" maxlength="60"/>
 
-                    <p:outputLabel value="Status" for="status" />
+                    <p:outputLabel value="Status" for="status"/>
                     <p:selectOneMenu id="status" value="#{listaTarefaBean.novaTarefa.statusTarefa}">
-                        <f:selectItem itemLabel="Selecione" />
+                        <f:selectItem itemLabel="Selecione"/>
                         <f:selectItems value="#{listaTarefaBean.statusTarefa}" var="status"
-                                       itemLabel="#{status.status}" itemValue="#{status}" />
+                                       itemLabel="#{status.status}" itemValue="#{status}"/>
                     </p:selectOneMenu>
 
-                    <p:outputLabel />
+                    <p:outputLabel/>
                     <p:commandButton value="Salvar" id="salvar-button"
-                                action="#{listaTarefaBean.salvarNovaTarefa}"
-                                process="tarefa-dialog"
-                                     update="tarefas-table tarefa-dialog-message tarefa-painel-dialog"
-                                     oncomplete="if (!args.validationFailed) PF('edicaoTarefaDialog').hide()" />
+                                     action="#{listaTarefaBean.salvarNovaTarefa}"
+                                     process="tarefa-dialog"
+                                     update="tarefa-dialog-message tarefa-painel-dialog"
+                                     oncomplete="if (!args.validationFailed) PF('edicaoTarefaDialog').hide()"/>
 
                 </h:panelGrid>
             </p:dialog>
@@ -103,17 +104,16 @@
                       resizable="false" modal="true">
 
                 <h:panelGrid columns="2" id="painel-dialog">
-                    <p:outputLabel value="Código" for="id-usuario" />
-                    <p:inputText id="id-usuario" size="4" maxlength="10" />
+                    <p:outputLabel value="Código" for="id-usuario"/>
+                    <p:inputText id="id-usuario" size="4" maxlength="10"/>
 
-                    <p:outputLabel value="Nome" for="nome-usuario" />
-                    <p:inputText id="nome-usuario" size="60" maxlength="60" />
+                    <p:outputLabel value="Nome" for="nome-usuario"/>
+                    <p:inputText id="nome-usuario" size="60" maxlength="60"/>
                 </h:panelGrid>
             </p:dialog>
 
 
         </h:form>
-
 
 
     </ui:define>
