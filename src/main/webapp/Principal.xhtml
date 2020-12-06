@@ -28,7 +28,9 @@
                                      action="#{listaTarefaBean.criarNovaTarefa}"
                                      process="@this"
                                      update="tarefa-dialog"
-                                     oncomplete="PF('edicaoTarefaDialog').show();"/>
+                                     oncomplete="PF('edicaoTarefaDialog').show();">
+                        <p:resetInput target="tarefa-dialog" />
+                    </p:commandButton>
 
                     <span class="ui-separator">
                         <span class="ui-icon pi pi-ellipsis-v"/>
